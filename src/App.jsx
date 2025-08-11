@@ -21,6 +21,7 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [products, setProducts] = useState([]); // For admin to add products
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const addToCart = (product) => {
     if (cart.some(item => item.id === product.id)) {
@@ -54,12 +55,15 @@ function App() {
     setShowSplash(false);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
   if (showSplash) {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gray-50 flex flex-col">
+    <div className={`min-h-screen w-full overflow-x-hidden flex flex-col ${isDarkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       {/* Notification */}
       {notification && (
         <div className="fixed top-20 right-4 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pulse-notification">
@@ -68,7 +72,7 @@ function App() {
       )}
       <Router>
         
-        <Navbar user={user} onSignOut={handleSignOut} onSearch={handleSearch} />
+        <Navbar user={user} onSignOut={handleSignOut} onSearch={handleSearch} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
         <main className="pt-20 flex-1">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <Routes>
@@ -85,13 +89,13 @@ function App() {
             </Routes>
           </div>
         </main>
-        <footer className="bg-white border-t border-gray-200 py-6 text-center text-gray-500 text-sm mt-8">
+        <footer className={`border-t py-6 text-center text-sm mt-8 ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-400' : 'bg-white border-gray-200 text-gray-500'}`}>
           <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 px-4 sm:px-6 lg:px-8">
             <div>&copy; {new Date().getFullYear()} Lokha-Eco Shop. All rights reserved.</div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-green-700">Privacy Policy</a>
-              <a href="#" className="hover:text-green-700">Terms of Service</a>
-              <a href="#" className="hover:text-green-700">Contact</a>
+              <a href="#" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Privacy Policy</a>
+              <a href="#" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Terms of Service</a>
+              <a href="#" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Contact</a>
             </div>
           </div>
         </footer>
