@@ -31,6 +31,7 @@ export default function Navbar({ user, onSignOut, onSearch, isDarkMode, toggleDa
         {/* Navigation Links (center) */}
         <nav className="flex items-center gap-6 text-base font-medium flex-shrink-0">
           <Link to="/" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Home</Link>
+          <Link to="/regions" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Regions</Link>
           <Link to="/categories" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Categories</Link>
           <Link to="/products" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Products</Link>
           <Link to="/cart" className={`hover:text-green-700 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Cart</Link>

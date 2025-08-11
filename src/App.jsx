@@ -12,6 +12,7 @@ import Login from './Login';
 import Signup from './Signup';
 import Admin from './Admin';
 import Shipping from './Shipping';
+import IndiaMap from './components/IndiaMap';
 import './App.css';
 
 function App() {
@@ -86,6 +87,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/admin" element={<Admin user={user} addProduct={addProduct} />} />
               <Route path="/shipping" element={<Shipping cart={cart} />} />
+              <Route path="/regions" element={<IndiaMap />} />
             </Routes>
           </div>
         </main>
